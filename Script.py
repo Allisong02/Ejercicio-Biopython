@@ -28,3 +28,12 @@ def summarize_contents(filename):
 if __name__=="__main__":
 	resultado = summarize_contents(filename)
 	print(resultado)
+
+#Comienzo de la nueva función agregada.
+from Bio.Seq import Seq
+seq1 = Seq("GTCAGCATA")
+seq2 = Seq("GACTCATCA") 
+def concatenate_and_get_reverse_complement(seq1, seq2):
+    seqcon = seq1 + seq2 
+    print(seqcon.reverse_complement())
+concatenate_and_get_reverse_complement(seq1, seq2)
