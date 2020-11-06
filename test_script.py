@@ -21,3 +21,21 @@ class Miprueba(unittest.TestCase):
 	def test_summarize_contents(self):
 		s=Script.summarize_contents("/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/m_cold.fasta")
 		self.assertEqual("\nfile: m_cold.fasta\npath: /mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data\nnum_records: 1\nrecord(s): \n- id: gi|8332116|gb|BE037100.1|BE037100\nname: gi|8332116|gb|BE037100.1|BE037100\ndescription: gi|8332116|gb|BE037100.1|BE037100 MP14H09 MP Mesembryanthemum crystallinum cDNA 5' similar to cold acclimation protein, mRNA sequence", s)
+#Funcion que prueba la función concatenate_and_get_reverse_complement.
+from Bio.Seq import Seq 
+class Miprueba2(unittest.TestCase): 
+    def test_concatenate_and_get_reverse_complement(self): 
+        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("GTCAGCATA"), seq2 = Seq("GACTCATCA"))
+        self.assertEqual("TGATGAGTCTATGCTGAC")
+    def test_concatenate_and_get_reverse_complement(self): 
+        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("GATCGGCTA"), seq2 = Seq("GACCTGCAT"))
+        self.assertEqual("ATGCAGGTCTAGCCGATC")
+    def test_concatenate_and_get_reverse_complement(self): 
+        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("ATCGTTTAC"), seq2 = Seq("CATTTGCTA"))
+        self.assertEqual("TAGCAAATGGTAAACGAT")
+    def test_concatenate_and_get_reverse_complement(self): 
+        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("CGTACTTAG"), seq2 = Seq("TAGCCAGCG"))
+        self.assertEqual("CGCTGGCTACTAAGTACG")
+    def test_concatenate_and_get_reverse_complement(self): 
+        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("TATATCGTC"), seq2 = Seq("ACCTGCTAT"))
+        self.assertEqual("ATAGCAGGTGACGATATA")
