@@ -35,5 +35,8 @@ seq1 = Seq("GTCAGCATA")
 seq2 = Seq("GACTCATCA") 
 def concatenate_and_get_reverse_complement(seq1, seq2):
     seqcon = seq1 + seq2 
-    print(seqcon.reverse_complement())
+    seqrevcom = seqcon.reverse_complement() 
+    return seqrevcom
+    print (seqrevcom)
 concatenate_and_get_reverse_complement(seq1, seq2)
+
