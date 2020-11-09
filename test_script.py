@@ -25,17 +25,27 @@ class Miprueba(unittest.TestCase):
 from Bio.Seq import Seq 
 class Miprueba2(unittest.TestCase): 
     def test_concatenate_and_get_reverse_complement(self): 
-        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("GTCAGCATA"), seq2 = Seq("GACTCATCA"))
-        self.assertEqual("TGATGAGTCTATGCTGAC")
+        seq1 = Seq("GTCAGCATA") 
+        seq2 = Seq("GACTCATCA")
+        s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
+        self.assertEqual("TGATGAGTCTATGCTGAC",s)
     def test_concatenate_and_get_reverse_complement(self): 
-        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("GATCGGCTA"), seq2 = Seq("GACCTGCAT"))
-        self.assertEqual("ATGCAGGTCTAGCCGATC")
+        seq1 = Seq("GATCGGCTA")
+        seq2 = Seq("GACCTGCAT")
+        s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
+        self.assertEqual("ATGCAGGTCTAGCCGATC", s)
     def test_concatenate_and_get_reverse_complement(self): 
-        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("ATCGTTTAC"), seq2 = Seq("CATTTGCTA"))
-        self.assertEqual("TAGCAAATGGTAAACGAT")
+        seq1 = Seq("ATCGTTTAC")
+        seq2 = Seq("CATTTGCTA")
+        s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
+        self.assertEqual("TAGCAAATGGTAAACGAT", s)
     def test_concatenate_and_get_reverse_complement(self): 
-        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("CGTACTTAG"), seq2 = Seq("TAGCCAGCG"))
-        self.assertEqual("CGCTGGCTACTAAGTACG")
+        seq1 = Seq("CGTACTTAG")
+        seq2 = Seq("TAGCCAGCG")
+        s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
+        self.assertEqual("CGCTGGCTACTAAGTACG", s)
     def test_concatenate_and_get_reverse_complement(self): 
-        s=Script.concatenate_and_get_reverse_complement(seq1 = Seq("TATATCGTC"), seq2 = Seq("ACCTGCTAT"))
-        self.assertEqual("ATAGCAGGTGACGATATA")
+        seq1 = Seq("TATATCGTC") 
+        seq2 = Seq("ACCTGCTAT")
+        s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
+        self.assertEqual("ATAGCAGGTGACGATATA", s)
