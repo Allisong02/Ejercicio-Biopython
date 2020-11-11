@@ -1,6 +1,6 @@
 import unittest 
 import Script
-
+from Bio.Seq import Seq 
 
 class Miprueba(unittest.TestCase):
 	def test_summarize_contents(self):
@@ -22,7 +22,6 @@ class Miprueba(unittest.TestCase):
 		s=Script.summarize_contents("/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/m_cold.fasta")
 		self.assertEqual("\nfile: m_cold.fasta\npath: /mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data\nnum_records: 1\nrecord(s): \n- id: gi|8332116|gb|BE037100.1|BE037100\nname: gi|8332116|gb|BE037100.1|BE037100\ndescription: gi|8332116|gb|BE037100.1|BE037100 MP14H09 MP Mesembryanthemum crystallinum cDNA 5' similar to cold acclimation protein, mRNA sequence", s)
 #Funcion que prueba la función concatenate_and_get_reverse_complement.
-from Bio.Seq import Seq 
 class Miprueba2(unittest.TestCase): 
     def test_concatenate_and_get_reverse_complement(self): 
         seq1 = Seq("GTCAGCATA") 
@@ -49,3 +48,25 @@ class Miprueba2(unittest.TestCase):
         seq2 = Seq("ACCTGCTAT")
         s=Script.concatenate_and_get_reverse_complement(seq1, seq2)
         self.assertEqual("ATAGCAGGTGACGATATA", s)
+#Función que prueba la función print_protein_and_stop_codon_using_standard_table 
+class Miprueba3(unittest.TestCase):
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadenaDNA = "ATGCTATGCTAGGTTATATTAG"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('AUGCUAUGCUAGGUUAUAUUAG'), 'Proteins': Seq('MLC'), 'Stop codon': Seq('TAG')}, s)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadenaDNA = "CTGGATGCATGCTAGCTATTGA"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('CUGGAUGCAUGCUAGCUAUUGA'), 'Proteins': Seq('L'), 'Stop codon': Seq('TAG')}, s)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadenaDNA = "TTGTGATCATAGTCTGGCGTAA"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('UUGUGAUCAUAGUCUGGCGUAA'), 'Proteins': Seq('L'), 'Stop codon': Seq('TGA')}, s)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadenaDNA = "ATGCGTGAGCTGGGCTACTAGC"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('AUGCGUGAGCUGGGCUACUAGC'), 'Proteins': Seq('LGY'), 'Stop codon': Seq('TAG')}, s)
+        def test_print_protein_and_stop_codon_using_standard_table(self):
+                cadenaDNA = "CTGGTGGGTAAACATATCTGAG"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('CUGGUGGGUAAACAUAUCUGAG'), 'Proteins': Seq('LVGKHI'), 'Stop codon': Seq('TGA')}, s)
