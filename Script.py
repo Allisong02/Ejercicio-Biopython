@@ -29,7 +29,7 @@ if __name__=="__main__":
 	resultado = summarize_contents(filename)
 	print(resultado)
 
-#Comienzo de la nueva función agregada.
+#Comienzo de la función concatenate_and_get_reverse_complement
 from Bio.Seq import Seq
 seq1 = Seq("GTCAGCATA")
 seq2 = Seq("GACTCATCA") 
@@ -40,3 +40,27 @@ def concatenate_and_get_reverse_complement(seq1, seq2):
     print (seqrevcom)
 concatenate_and_get_reverse_complement(seq1, seq2)
 
+#Comienzo de la función print_protein_and_stop_codon_using_standard_table 
+from Bio.Seq import Seq 
+
+cadenaDNA = "CTGGTGGGTAAACATATCTGAG"
+def print_protein_and_stop_codon_using_standard_table(cadenaDNA): 
+    seqDNA = Seq(cadenaDNA)
+    diccionario = {}
+    mRNA = seqDNA.transcribe()
+    diccionario ['mRNA'] = mRNA 
+    for i in range(len(seqDNA)):
+        if((seqDNA[i*3:i*3+3] == 'ATG') or (seqDNA[i*3:i*3+3] == 'TTG') or (seqDNA[i*3:i*3+3] == 'CTG')):
+            proteins = seqDNA[i*3:].translate(to_stop = True)
+            diccionario['Proteins'] = proteins
+
+            for j in range(len(seqDNA)): 
+                if((seqDNA[j*3:j*3+3] == 'TAG') or (seqDNA[j*3:j*3+3] == 'TAA') or (seqDNA[j*3:j*3+3] == 'TGA')):
+                    diccionario['Stop codon'] = seqDNA[j*3:j*3+3]
+                    break
+        
+        if(i+1 == len(seqDNA)): 
+            break 
+    return diccionario 
+resultado = print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+print(resultado)
