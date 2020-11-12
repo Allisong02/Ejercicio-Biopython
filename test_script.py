@@ -70,3 +70,25 @@ class Miprueba3(unittest.TestCase):
                 cadenaDNA = "CTGGTGGGTAAACATATCTGAG"
                 s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
                 self.assertEqual({'mRNA': Seq('CUGGUGGGUAAACAUAUCUGAG'), 'Proteins': Seq('LVGKHI'), 'Stop codon': Seq('TGA')}, s)
+#Función que prueba la funcion print_protein_and_stop_codon_using_mitochondrial_yeast_table
+class Miprueba4(unittest.TestCase):
+        def test_print_protein_and_stop_codon_using_mitochondrial_yeast_table(self):
+                cadenaDNA = "GTGGTGGGTAAACATATCTAA"
+                s=Script.print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('GUGGUGGGUAAACAUAUCUAA'), 'Proteins': Seq('VGKHI'), 'Stop codon': Seq('TAA')}, s)
+        def test_print_protein_and_stop_codon_using_mitochondrial_yeast_table(self):
+                cadenaDNA = "ATAAATGCTATTAGCTAGTAG"
+                s=Script.print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('AUAAAUGCUAUUAGCUAGUAG'), 'Proteins': Seq('MNAIS'), 'Stop codon': Seq('TAG')}, s)
+        def test_print_protein_and_stop_codon_using_mitochondrial_yeast_table(self):
+                cadenaDNA = "ATGCGAACGATGCTAGGATAA"
+                s=Script.print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('AUGCGAACGAUGCUAGGAUAA'), 'Proteins': Seq('MTG'), 'Stop codon': Seq('TAA')}, s)
+        def test_print_protein_and_stop_codon_using_mitochondrial_yeast_table(self):
+                cadenaDNA = "GTGGGCATGCGGTTAACTTAG"
+                s=Script.print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('GUGGGCAUGCGGUUAACUUAG'), 'Proteins': Seq('MRLT'), 'Stop codon': Seq('TAG')}, s)
+        def test_print_protein_and_stop_codon_using_mitochondrial_yeast_table(self):
+                cadenaDNA = "ATGCGCGAGAGCGATAGCTAG"
+                s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+                self.assertEqual({'mRNA': Seq('AUGCGCGAGAGCGAUAGCUAG'), 'Proteins': Seq('MRESDS'), 'Stop codon': Seq('TAG')}, s)
