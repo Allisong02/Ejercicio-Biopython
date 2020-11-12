@@ -1,5 +1,6 @@
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
+from Bio.Seq import Seq 
 import os
 
 # Archivo de la carpeta en escritorio, se debe de cambiar a la dirección del nuevo archivo .gbk o .fasta a leer
@@ -30,7 +31,6 @@ if __name__=="__main__":
 	print(resultado)
 
 #Comienzo de la función concatenate_and_get_reverse_complement
-from Bio.Seq import Seq
 seq1 = Seq("GTCAGCATA")
 seq2 = Seq("GACTCATCA") 
 def concatenate_and_get_reverse_complement(seq1, seq2):
@@ -41,8 +41,6 @@ def concatenate_and_get_reverse_complement(seq1, seq2):
 concatenate_and_get_reverse_complement(seq1, seq2)
 
 #Comienzo de la función print_protein_and_stop_codon_using_standard_table 
-from Bio.Seq import Seq 
-
 cadenaDNA = "CTGGTGGGTAAACATATCTGAG"
 def print_protein_and_stop_codon_using_standard_table(cadenaDNA): 
     seqDNA = Seq(cadenaDNA)
@@ -63,4 +61,27 @@ def print_protein_and_stop_codon_using_standard_table(cadenaDNA):
             break 
     return diccionario 
 resultado = print_protein_and_stop_codon_using_standard_table(cadenaDNA)
+print(resultado)
+
+#Comienzo de la función print_protein_and_stop_codon_using_mitochondrial_yeast_table 
+cadenaDNA = "ATGCGCGAGAGCGATAGCTAG"
+def print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA): 
+    seqDNA = Seq(cadenaDNA)
+    diccionario = {}
+    mRNA = seqDNA.transcribe()
+    diccionario ['mRNA'] = mRNA 
+    for i in range(len(seqDNA)):
+        if((seqDNA[i*3:i*3+3] == 'ATG') or (seqDNA[i*3:i*3+3] == 'GTG') or (seqDNA[i*3:i*3+3] == 'ATA')):
+            proteins = seqDNA[i*3:].translate(table = 3, to_stop = True)
+            diccionario['Proteins'] = proteins
+
+            for j in range(len(seqDNA)): 
+                if((seqDNA[j*3:j*3+3] == 'TAG') or (seqDNA[j*3:j*3+3] == 'TAA')):
+                    diccionario['Stop codon'] = seqDNA[j*3:j*3+3]
+                    break
+        
+        if(i+1 == len(seqDNA)): 
+            break 
+    return diccionario 
+resultado = print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
 print(resultado)
