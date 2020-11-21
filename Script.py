@@ -106,10 +106,11 @@ extract_sequences(filename)
 #Comienzo de la función extract_sequences_revcomp.
 filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
 def extract_sequences_revcomp(filename): 
-    parametro = list(SeqIO.parse(filename, "fasta"))
+    records = list(SeqIO.parse(filename, "fasta"))
     s = open(f"sequence_revcomp.fasta","w")
-    for i, record in enumerate(parametro): 
+    for i, record in enumerate(records): 
         s.write(f'>{record.id}\n')
         s.write(f'{record.seq.reverse_complement()}\n')
     s.close()
+    num_records = len(records)
 extract_sequences_revcomp(filename)
