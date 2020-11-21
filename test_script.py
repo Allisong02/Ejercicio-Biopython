@@ -99,5 +99,11 @@ class MiPrueba5(unittest.TestCase):
         filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
         esrv = Script.extract_sequences_revcomp(filename)
         self.assertEqual(837, esrv)
-
+#Función que prueba a la función extract_sequences 
+filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
+class MiPrueba6(unittest.TestCase): 
+    def test_extract_sequences(self):
+        filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
+        es = Script.extract_sequences(filename)
+        self.assertEqual(837, es)
 
