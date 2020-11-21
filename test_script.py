@@ -92,3 +92,12 @@ class Miprueba4(unittest.TestCase):
                 cadenaDNA = "ATGCGCGAGAGCGATAGCTAG"
                 s=Script.print_protein_and_stop_codon_using_standard_table(cadenaDNA)
                 self.assertEqual({'mRNA': Seq('AUGCGCGAGAGCGAUAGCUAG'), 'Proteins': Seq('MRESDS'), 'Stop codon': Seq('TAG')}, s)
+#Función que prueba a la función extract_sequences_revcomp
+filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
+class MiPrueba5(unittest.TestCase): 
+    def test_extract_sequences_revcomp(self):
+        filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
+        esrv = Script.extract_sequences_revcomp(filename)
+        self.assertEqual(837, esrv)
+
+
