@@ -121,8 +121,8 @@ def extract_sequences(filename,salida):
             archivo.write(record.format("fasta"))
             archivo.close()
             files = files+1 
+    return(files) 
 extract_sequences(filename,salida)
-
 #Comienzo de la función extract_sequences_revcomp.
 filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
 def extract_sequences_revcomp(filename): 
