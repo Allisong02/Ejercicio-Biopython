@@ -86,20 +86,7 @@ def print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA):
 resultado = print_protein_and_stop_codon_using_mitochondrial_yeast_table(cadenaDNA)
 print(resultado)
 
-#Comienzo de la función extract_sequences
-filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
-def extract_sequences(filename):
-    records = list(SeqIO.parse(filename, "fasta"))
-    files = 0
-    for i, record in enumerate(records):
-        s = open(f'sequences{i}.fasta','w')
-        s.write(f'ID:{record.id}\n')
-        s.write(f'{record.seq}')
-        s.close()
-        files = files+1
-    return (files)
-extract_sequences(filename)
-#Comienzo de la función extract_sequences con Gen Bank. 
+#Comienzo de la función extract_sequences para Gen Bank y Fasta.  
 filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
 salida = "genbank"
 tipo_de_molecula = "protein"
