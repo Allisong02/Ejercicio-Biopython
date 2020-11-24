@@ -100,6 +100,28 @@ def extract_sequences(filename):
     return (files)
 extract_sequences(filename)
 #Comienzo de la función extract_sequences con Gen Bank. 
+filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
+salida = "genbank"
+tipo_de_molecula = "protein"
+def extract_sequences(filename,salida):
+    files = 0
+    if(salida == "genbank"): 
+        SeqIO.convert(filename, "fasta", "sequences.gbk", "genbank", tipo_de_molecula)
+        records = list(SeqIO.parse("sequences.gbk","genbank"))
+        for i, record in enumerate(records): 
+            archivo = open(f"sequence{i}.gbk", "w")
+            archivo.write(record.format("genbank"))
+            archivo.close()
+            files = files+1 
+    else:
+        records = list(SeqIO.parse(filename,"fasta"))
+        files = 0
+        for i, record in enumerate(records): 
+            archivo = open(f"sequence{i}.fasta", "w")
+            archivo.write(record.format("fasta"))
+            archivo.close()
+            files = files+1 
+extract_sequences(filename,salida)
 
 #Comienzo de la función extract_sequences_revcomp.
 filename = "/mnt/c/Users/world/OneDrive/Escritorio/Allison/Ejercicio-Biopython/data/sequences.fasta"
